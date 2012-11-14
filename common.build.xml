@@ -9,21 +9,21 @@
   <property name="build.dir" location="${basedir}/build" />
 
   <!-- Make sure we're running a Java 6 or better. -->
-  <condition property="java.6.available">
+  <condition property="java.6.or.better.available">
     <contains string="${java.version}" substring="1.6" />
   </condition>
-  <fail message="This package requires Java 6." unless="java.6.available" />
+  <condition property="java.6.or.better.available">
+    <contains string="${java.version}" substring="1.7" />
+  </condition>
+  <fail message="This package requires Java 6." unless="java.6.or.better.available" />
 
-  <!-- Make sure we're running Ant 1.7.1 or better. Ant 1.7.0 has a bug that we must avoid.  -->
-  <condition property="ant.1.7.available">
+  <!-- Make sure we're running Ant 1.8.0 or better. -->
+  <condition property="ant.1.8.available">
     <and>
-      <contains string="${ant.version}" substring="1.7" />
-      <not>
-        <contains string="${ant.version}" substring="1.7.0" />
-      </not>
+      <contains string="${ant.version}" substring="1.8" />
     </and>
   </condition>
-  <fail message="This package requires Ant 1.7.1 or better; found ${ant.version}" unless="ant.1.7.available" />
+  <fail message="This package requires Ant 1.8.0 or better; found ${ant.version}" unless="ant.1.8.available" />
 
   <!-- Ivy download and configuration targets -->
   <property name="ivy.jar.path" location="${user.home}/.ivy2/ivyjar/" />
