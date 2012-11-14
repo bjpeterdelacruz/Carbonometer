@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<wicket:extend>
+  <head>
+  <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+	   
+   // Load the Visualization API and Annotated Timeline visualization
+   google.load('visualization', '1', {'packages':['annotatedtimeline']});
+   
+    var host_uri = 'http://server.wattdepot.org:8184/gviz/sources/';
+	var timestamp = 'T00:00:00.000-10:00';
+	var startTime = '';
+	var endTime = '';
+	var subsourceOption = 'true';
+	var powerSource = '';	
+	var dataType = '';
+	var isError = false;
+	var interval= 240;
+	var year =0;
+
+	function setValues() {
+		// Reset datatype
+		dataType = '';
+		start = new Date(document.getElementsByName('start_day')[0].value);		
+		if (start.getDate() < 10) {
+		 	day = '0' + start.getDate();
+		//    day = start.getDate();
+		}
+		else {
+			day = start.getDate();
+		}
+		year = start.getFullYear() + 100;
+		startTime = year + '-' + (start.getMonth() + 1) + '-' + day + timestamp;
+
+		end = new Date(document.getElementById('end_day').value);
+		if (end.getDate() < 10) {
+			day = '0' + end.getDate();
+       //     day = end.getDate();
+		}
+		else {
+			day = end.getDate();
+		}
+		year =end.getFullYear() + 100;
+		
+		endTime = year + '-' + (end.getMonth() + 1) + '-' + day + timestamp;		
+		
+		if (start.getTime() > end.getTime()) {			
+			isError = true;
+		}
+		sourceIndex = document.getElementById('source').selectedIndex;
+		powerSource = document.getElementById('source').options[sourceIndex].text;
+		
+		if (document.getElementById('energyG').checked == true) {
+			dataType += 'energyGenerated, ';
+		}
+		if (document.getElementById('energyC').checked == true) {
+			dataType += 'energyConsumed, ';
+		}
+		if (document.getElementById('powerG').checked == true) {
+			dataType += 'powerGenerated, ';
+		}
+		if (document.getElementById('powerC').checked == true) {
+			dataType += 'powerConsumed, ';
+		}
+		if (document.getElementById('carbonE').checked == true) {
+			dataType += 'carbonEmitted, ';
+		}
+		
+		// Removed the last comma.
+		dataType = dataType.substring(0, (dataType.length - 2));
+		
+	}	   
+   // Send the query to the data source. 
+   function init() {   
+	isError = false;
+    setValues(); 
+	
+	if (isError) {
+		document.getElementById('error').innerHTML = "Invalid date" ;
+		document.getElementById('vtitle').innerHTML = "" ;
+		document.getElementById('chart_div').innerHTML = "" ;
+	}
+	else {
+		document.getElementById('error').innerHTML = "	" ;
+		var powerQuery = 'select timePoint, ';
+		google.load('visualization', '1', {'packages':['annotatedtimeline']});	
+		interval = document.getElementById('samplingInterval').options[document.getElementById('samplingInterval').selectedIndex].value;
+		
+		chart = host_uri + powerSource + '?startTime=' + startTime + '&endTime=' + endTime + '&samplingInterval='+interval+'&displaySubsources=' + subsourceOption;
+//		alert(chart);
+		powerQuery += dataType; 
+		//alert (powerQuery);		
+		//add title
+		document.getElementById('vtitle').innerHTML = "Graph Display for " + powerSource ;
+		var query = new google.visualization.Query(chart);	
+		query.setQuery(powerQuery);
+		query.send(handleQueryResponse);
+	   }
+	   
+	  // Handle the query response.
+	  function handleQueryResponse(response) {
+	   if (response.isError()) {
+		alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		return;
+	   }
+	
+	   // Draw the visualization.
+	   var data = response.getDataTable();
+	   var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div'));
+	   chart.draw(data, {displayAnnotations: false, legendPosition: 'newRow', thickness: 1});
+	}
+  }
+  
+  </script>
+  </head>
+  <body>
+  <center>
+    <table align="center" width="900">
+      <tr>
+        <th colspan="2" style="border-bottom: hidden; text-align: left"><font size="+2"> <strong>Grid Visualization</strong> </font></th>
+      </tr>
+      <tr>
+        <th colspan="2" style="border-bottom:solid; border-color:#006600; border-width:1px;"> Provide the following information: </th>
+      </tr>
+      <tr height="400">
+        <!-- Build the form to generate power chart -->
+        <td style=" vertical-align: top; position:float; border-style:solid; border-color:#006600; "><form wicket:id="visualedForm">
+            <table width="100%">
+              <tr>
+                <th style="border-bottom: hidden">Period<br/>
+                  <input name ="start_day" wicket:id="start_day" type="text" size="6" READONLY id="start" />
+                  -
+                  <input name ="end_day" wicket:id="end_day" type="text" size="6" READONLY /></th>
+              </tr>
+              <tr>
+                <th style="border-bottom: hidden">Power source<br/>
+                  <select wicket:id="source"  id="source">
+                    <option></option>
+                  </select>
+                </th>
+              </tr>
+              <tr>
+                <td style="border-bottom: hidden"><div align="center"><strong>Sampling interval</strong><br/>
+                    <select name="samplingInterval" size="1"  id="samplingInterval">
+                      <option value="15">15 min</option>
+                      <option value="30">30 min</option>
+                      <option value="60">1 hour</option>
+                      <option value="120">2 hours</option>
+                      <option value="720">12 hours</option>
+                      <option value="1440">1 day</option>
+                    </select>
+                  </div></td>
+              </tr>
+              <tr>
+                <td style="border-bottom: hidden"><strong>Select type of data:</strong>
+                  <p>
+                    <input id="energyG" type="checkbox" checked />
+                    energy generated <br/>
+                    <input id="energyC" type="checkbox" />
+                    energy consumed <br/>
+                    <input id="powerG" type="checkbox" checked/>
+                    power generated <br/>
+                    <input id="powerC" type="checkbox" />
+                    power consumed <br/>
+                    <input id="carbonE" type="checkbox" checked/>
+                    carbon emitted <br/>
+                </td>
+              </tr>
+              <tr>
+                <td style="border-bottom: hidden"><center>
+                    <input type="button" id="Button" onClick="init();" value="Generate Chart" />
+                  </center></td>
+              </tr>
+            </table>
+          </form></td>
+        <!-- Chart display here -->
+        <td width="670" style=" border-style:solid; border-width:1px; border-color:#006600 "><center>
+            <p><span id="error" style="color:#FF0000; "></span></p>
+            <p><span id="vtitle" style="color:#000000; font-weight:bold; font-size:16px"></span></p>
+            <div id='chart_div' style='width: 600px; height: 300px;'></div>
+          </center></td>
+      </tr>
+    </table>
+  </center>
+  </body>
+</wicket:extend>
+</html>

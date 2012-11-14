@@ -1,0 +1,76 @@
+<html>
+<wicket:extend>
+<head></head>
+<body >
+  <!-- Build header of the page -->
+
+  
+  <!-- Build the header navigator bar -->
+  
+  <center>
+
+
+  <table align="center" width="900">
+   <tr><th colspan="2" style="border-bottom: hidden; text-align: left"><font size="+2">
+     <strong>Oahu Grid Information</strong>
+   </font></th></tr>
+   <tr><th colspan="2" style="border-bottom:solid; border-color:#006600; border-width:1px;">
+   Provide the following information:
+   </th></tr>
+   <tr>
+    <!-- Build the form to generate power chart -->
+    <td style=" vertical-align: top; position:float; border-style:solid; border-color:#006600; ">
+	<form wicket:id="gridForm">
+    <table width="100%"> 
+      <tr><th style="border-bottom: hidden">Period<br/> 
+      	<input wicket:id="start_day" type="text" name="start_day" size="6" READONLY />     	
+      	-  
+        <input wicket:id="end_day" type="text" name="end_day" size="6" READONLY /></th></tr>
+      <tr><th style="border-bottom: hidden">Power source<br/> 
+       <select wicket:id="source">
+        <option></option>
+       </select>
+      </th></tr>
+      <tr><th style="border-bottom: hidden">Data Type<br/> 
+       <select wicket:id="powerType">
+        <option></option>
+       </select>
+      </th></tr>
+      <tr>
+        <th style="border-bottom: hidden">Granularity<br/>
+          <select wicket:id="granularity">
+            <option></option>
+          </select>
+        </th>
+      </tr>
+      <tr>
+        <th style="border-bottom: hidden">Include subsources:&nbsp;
+          <input wicket:id="subsource" type="checkbox" />
+        </th>
+      </tr>
+      <tr><td style="border-bottom: hidden"><center>
+        <input wicket:id="generate" type="submit" value="Generate Chart" /> 
+      </center></td></tr>        
+    </table>
+    </form>   
+    
+    </td>   
+    
+    <!-- Chart display here --> 
+    <td width="670" style=" border-style:solid; border-width:1px; border-color:#006600 "><center>
+       <p><span wicket:id="status" style="color:#FF0000; ">[error message]</span></p>
+       <img wicket:id="chart"/>    
+       
+          
+       </center>
+    </td>
+    
+    
+   </tr>
+  </table>
+  </center>
+  
+</body>
+</wicket:extend>
+</html>
+

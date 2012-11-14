@@ -1,0 +1,77 @@
+/* -------------------------------------------------------------- 
+  
+   Boilerplate Screen Styles
+   * Version:   0.5 (2007-11-19)
+   
+-------------------------------------------------------------- */
+
+@import "lib/reset.css";
+@import "lib/typography.css";
+@import "lib/forms.css";
+@import "lib/plugins/menu.css";
+
+/* Colors 
+  #3366CC  Blue-Green  (Text) 
+  #E5ECF9  Light Blue-Grey (Shaded background)
+  #FF3366  Bright Red-Pink
+  #CCCCCC  Grey
+-------------------------------------------------------------- */
+
+
+/* Page
+-------------------------------------------------------------- */
+
+#page { margin: 0 auto; width: 95%; }
+
+
+/* Header
+-------------------------------------------------------------- */
+
+#header { margin-top: 20px; }
+#header .tabs { border-bottom: 1px solid #3366CC; }
+#header .tabs li { margin-right: 1px; }
+#header .tabs a { padding: 5px 15px; background: #E5ECF9; color: #3366CC; text-decoration: none; }
+
+
+/* Body
+-------------------------------------------------------------- */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,input,textarea { color:#000000}
+
+img { vertical-align: middle }
+
+hr { color : #3366CC; background-color : #3366CC; height : 2px; }
+
+
+body { margin: 10px; }
+
+
+
+/* Footer
+-------------------------------------------------------------- */
+
+#info { float: left; width: 100%; border-top: 1px solid #3366CC; margin-top: 1px; }
+
+#footer { border-top: 1px solid #3366CC; margin-top: 1px; }
+
+#footer .tabs { width: 405px; border-top: 3px solid  #E5ECF9; }
+#footer .tabs a { padding: 10px 30px 10px 0; color: #3366CC; text-decoration: none; }
+
+#footer p.quiet { color: #3366CC; }
+
+#footerFeedback { color : #ff3366; }
+#footerLeft { float: left; border-top: 1px solid #eee; margin-top: 1px; width: 70%}
+#footerRight { float: right; text-align: right; border-top: 1px solid #eee; margin-top: 1px; width: 25%}
+
+#header th{
+	background-color:#009933;
+	color:#FFFFFF;
+	margin-left:2em;
+}
+#header a{
+	color:#FFFFFF;	
+
+}
+	
+
+
+

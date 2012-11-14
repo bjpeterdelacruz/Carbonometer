@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+
+</HEAD>
+<wicket:extend>
+<BODY>
+   <!-- Build header of the page -->
+   
+  
+  <CENTER>
+   <!-- Build the header navigator bar --> 
+ 
+
+   <TABLE WIDTH="60%">
+      <TR>
+         <TD COLSPAN="3" VALIGN="top" STYLE="border-bottom: hidden; color: #000000; font-size: 10pt; text-align: right; vertical-align: top">
+         <SPAN id="date" wicket:id="date" STYLE="text-align: right" />
+         </TD>      
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 20pt; text-align: center; vertical-align: top" WIDTH="40%">
+         <BR />Carbon intensity level at<BR />
+         <SPAN wicket:id="time" />:<BR /><BR /><SPAN wicket:id="data" />.
+         </TD>
+         <TD STYLE="border-bottom: hidden">
+            <CENTER>
+            <IMG wicket:id="stoplight" NAME="stoplight" /><BR /><BR />
+            <SPAN wicket:id="error" STYLE="color: #B21212" />
+            </CENTER>
+         </TD>
+         <TD STYLE="border-bottom: hidden; color: #000000; font-size: 13pt; vertical-align: top" WIDTH="40%">
+         <BR /><!--The Stoplight page provides useful information regarding the carbon emission level on
+         the island of Oahu in Hawaii.--><SPAN wicket:id="description" />
+         </TD>
+      </TR>
+      <TR>
+         <TD COLSPAN="3" STYLE="border-bottom: hidden; font-size: 20pt; padding: 20px; text-align: center">
+         Carbon intensity level will be checked again in <SPAN wicket:id="countdown" />
+         </TD>
+      </TR>
+   </TABLE>
+   </CENTER>
+</BODY>
+</wicket:extend>
+</HTML>

@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title wicket:id="title">Carbonometer</title>
+  <style type="text/css">
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 13px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 10px 16px;
+	width: auto;
+	background: green;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	
+	text-decoration: underline;
+
+}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #EAEBD8;
+	border: 1px solid #5970B2}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: 150px;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #EAEBD8;
+		color: #2875DE;
+		font: 11px arial}
+
+	#sddm div a:hover
+	{	background: #49A3FF;
+		color: #FFF}
+  </style>
+<center>
+<table WIDTH="900" BORDER="1">
+  	<tr>
+  		<td style="border-bottom: hidden">
+  			<img src="http://www2.hawaii.edu/~wahib/logo.gif" alt="logo" width="433" height="100" longdesc="http://www2.hawaii.edu/~wahib/logo.gif">
+		</td>
+	</tr>		  				
+</table>
+</center>
+</head>
+
+
+<body>
+ <center>
+  <!-- Build the header navigator bar --> 
+  <table width="900" style="background-color: green"><tr><td><center>
+  <ul id="sddm">
+    <li><a href="#" wicket:id="HomePageLink">About Us</a>
+    </li>
+    <li><a href="#" wicket:id="StoplightPageLink">Current Carbon Intensity</a>
+    </li>
+    <li><a href="#" wicket:id="GridInfoPageLink">Grid Information</a>
+    </li>
+    <li><a href="#" wicket:id="VisualizationPageLink">Grid Visualization</a>
+    </li>
+    <li><a wicket:id="ThresholdsPageLink" href="#">Daily Carbon Intensity</a>
+    </li>
+    <li><a href="#" wicket:id="SourceSummaryPageLink">Source Summary</a>
+    </li>
+  </ul>
+  </center></td></tr></table>
+
+</center>
+  <div id="body" class="wrapper">
+  <wicket:child/>
+  </div>
+
+</body>
+</html>

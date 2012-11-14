@@ -1,0 +1,58 @@
+<HTML>
+<HEAD><TITLE wicket:id="title">[Title]</TITLE></HEAD>
+<wicket:extend>
+<BODY>
+<CENTER>
+   <TABLE WIDTH="60%">
+      <TR>
+         <TD COLSPAN="2" STYLE="border-bottom: hidden"><SPAN wicket:id="error" STYLE="color: #B21212"/><BR />
+         <FORM wicket:id="sourceList">
+         <B>Select a power source about which you want information:</B>&nbsp;&nbsp;&nbsp;
+            <SELECT wicket:id="source">
+               <OPTION></OPTION>
+            </SELECT>
+            <INPUT wicket:id="generate" TYPE="submit" VALUE="Show Summary" />
+         </FORM>
+         </TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Subsources:&nbsp;&nbsp;</B></TD>
+         <TD WIDTH="60%" STYLE="border-bottom: hidden;"><SPAN wicket:id="subsources" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Description:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="description" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Owner:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="owner" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Location:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="location" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Coordinates:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="coordinates" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Properties:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="properties" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Earliest data:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="earliestData" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Latest data:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="latestData" STYLE="font-size: 12pt" /></TD>
+      </TR>
+      <TR>
+         <TD STYLE="border-bottom: hidden; font-size: 12pt; text-align: right"><B>Total data points:&nbsp;&nbsp;</B></TD>
+         <TD STYLE="border-bottom: hidden;"><SPAN wicket:id="totalDataPoints" STYLE="font-size: 12pt" /></TD>
+      </TR>
+   </TABLE>
+</CENTER>
+</BODY>
+</wicket:extend>
+</HTML>

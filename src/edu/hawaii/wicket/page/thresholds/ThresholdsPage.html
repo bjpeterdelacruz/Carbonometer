@@ -1,0 +1,67 @@
+<HTML>
+<HEAD><TITLE wicket:id="title">[Title]</TITLE></HEAD>
+<wicket:extend>
+<BODY>
+<CENTER>
+   <TABLE>
+      <TR>
+         <TD STYLE="border-bottom: hidden">
+            <TABLE STYLE="border-collapse: collapse; font-size: 15pt; font-weight: bold">
+               <TR>
+                  <TD STYLE="border-bottom: hidden; font-size: 10pt; text-align: center" COLSPAN="2">
+                     <FORM wicket:id="form"><SPAN style="font-weight: bold">Get carbon intensity data for the Oahu grid on:</SPAN>&nbsp;&nbsp;
+                        <INPUT TYPE="text" NAME="date" wicket:id="date" STYLE="width: 80px" READONLY /><BR /><BR />
+                        <INPUT TYPE="submit" wicket:id="button" value="Submit" />
+                     </FORM>
+                  </TD>
+               </TR>
+               <TR>
+                  <TD COLSPAN="2" STYLE="border-bottom: hidden">&nbsp;</TD>
+               </TR>
+               <TR>
+                  <TD STYLE="border-bottom: hidden; color: #FFFFFF; font-size: 10pt; font-weight: bold; text-align: center">
+                     <DIV STYLE="color: green; font-family: Arial; font-size: 13pt" wicket:id="min" />
+                     <DIV STYLE="color: #B21212; font-family: Arial; font-size: 13pt" wicket:id="max" />
+                  </TD>
+               </TR>
+               <TR>
+                  <TD STYLE="border-bottom: hidden; font-family: Arial; font-size: 13pt; width: 500px"><BR /><SPAN wicket:id="info" /><BR />
+                     <BR /><CENTER><IMG wicket:id="stoplight" STYLE="visibility: hidden" /></CENTER>
+                     <BR /><SPAN wicket:id="desc" /><BR /><BR /><SPAN wicket:id="tips" />
+                  </TD>
+               </TR>
+               <TR>
+                  <TD STYLE="border-bottom: hidden">&nbsp;</TD>
+               </TR>
+               <TR>
+                  <TD COLSPAN="2" STYLE="border-bottom: hidden; color: #B21212; font-size: 10pt; font-weight: bold"><DIV wicket:id="error" /></TD>
+               </TR>
+            </TABLE>
+         </TD>
+         <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+         <TD VALIGN="top" STYLE="border-bottom: hidden">
+    <TABLE STYLE="border-bottom: hidden; border-collapse: collapse">
+      <TR>
+         <TD STYLE="border-bottom: hidden">
+            <TABLE STYLE="background-color: #FFFFFF; color: #000000; font-size: 10pt">
+               <TR wicket:id="hours00-11">
+                  <TD wicket:id="tstamp00-11" STYLE="border-bottom: hidden; font-weight: bold; text-align: center">[Timestamp]</TD>
+               </TR>
+            </TABLE>
+         </TD>
+         <TD STYLE="border-bottom: hidden">
+            <TABLE STYLE="color: #000000; font-size: 10pt">
+               <TR wicket:id="results00-11">
+                  <TD wicket:id="data00-11" STYLE="border-bottom: hidden; font-weight: bold; text-align: center">[Data]</TD>
+               </TR>
+            </TABLE>
+         </TD>
+      </TR>
+   </TABLE>
+         </TD>
+      </TR>
+   </TABLE>
+</CENTER>
+</BODY>
+</wicket:extend>
+</HTML>
